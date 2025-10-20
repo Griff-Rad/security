@@ -14,3 +14,58 @@ Known Ports: unknown
 Known URL: consulting.site.donovia
 Known URL: conference.site.donovia
 Action: Reconnaissance to collect intelligence and identify possible avenues of approach in the network.
+
+
+
+ssh -MS /tmp/jump student@10.50.15.162
+ssh -S /tmp/jump -D 9050 a@1
+proxychains nmap -Pn -sT -p80 -T5 192.168.28.96/27
+  Nmap scan report for 192.168.28.100
+    PORT   STATE SERVICE
+    80/tcp open  http
+Nmap scan report for 192.168.28.100
+Not shown: 998 closed ports
+PORT     STATE SERVICE
+80/tcp   open  http
+  | http-enum: 
+  |   /admin/: Possible admin folder ---admin.php, login.css, login.php
+  |   /admin/login.php: Possible admin folder--- brought to a admin login page.
+  |_  /img/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+  2222/tcp open  EtherNetIP-1
+(exit dynamic)
+ssh -S /tmp/jump -O forward -L 1738:192.168.28.100:80 a
+firefox http://127.0.0.1:1738 &
+    "welcome to the Donovian Government, This site is under maintenance"
+
+Nmap scan report for 192.168.28.111
+    PORT   STATE SERVICE
+    80/tcp open  http
+Nmap scan report for 192.168.28.111
+Not shown: 997 closed ports
+  PORT     STATE SERVICE
+  80/tcp   open  http
+    | http-enum: 
+    |   /css/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+    |   /images/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+    |_  /sites/: Potentially interesting folder
+  2222/tcp open  EtherNetIP-1
+  8080/tcp open  http-proxy ----VIEW PAGE SOURCE!!!!!!!
+    | http-enum: 
+    |   /css/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+    |   /images/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+    |_  /js/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+
+ssh -S /tmp/jump -O forward -L 1760:192.168.28.111:80 a
+firefox http://127.0.0.1:1760 &
+    "Donovia National Consulting
+    Greetings>>>*testing and training environment, talkin bout being the nations conuslting agency*
+
+ssh -S /tmp/jump -O forward -L 1761:192.168.28.111:8080 a
+firefox http://127.0.0.1:1761 &
+    "Workshop---conference 2019 september 6th-7th, minnesota....."
+ 
+    
+
+
+
+
