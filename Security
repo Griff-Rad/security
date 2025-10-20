@@ -1,3 +1,11 @@
 nix_op_sec --- 10.50.182.18
 github.com/pmigoku/cybersecurity-public
 17, GRRA-023-M, lvaZsAC2R0TC, 10.50.15.162
+
+
+
+#what hosts are up
+  pingsweep
+        for i in {97..126} ;do (ping -c 1 192.168.28.$i | grep "bytes from" &) 2>/dev/null ;done
+#even more target
+  proxychains nmap -Pn -sT -sV -T5 192.168.28.100,105,111,120
