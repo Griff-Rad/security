@@ -76,8 +76,8 @@ proxychains nmap -Pn -sT -T5 192.168.28.105
 
 
 ssh -MS /tmp/jump student@10.50.15.162
-ssh -S /tmp/jump -O forward -L 1756:192.168.28.120:4242
-ssh -S /tmp/jump -p 1756 -D 9050 a
+ssh -S /tmp/jump -O forward -L RHPORT:192.168.28.120:4242 a
+ssh -S /tmp/jump -p RHPORT -D 9050 a
 ssh student@192.168.28.120 -p 4242
 proxychains nmap -p 445 --script=smb-os-discovery 192.168.150.245
 
