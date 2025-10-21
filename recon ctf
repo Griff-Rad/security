@@ -63,7 +63,16 @@ firefox http://127.0.0.1:1760 &
 ssh -S /tmp/jump -O forward -L 1761:192.168.28.111:8080 a
 firefox http://127.0.0.1:1761 &
     "Workshop---conference 2019 september 6th-7th, minnesota....."
- 
+
+
+proxychains nmap -Pn -sT -T5 192.168.28.105 
+     Nmap scan report for 192.168.28.105
+    Not shown: 997 closed ports
+    PORT     STATE SERVICE
+    21/tcp   open  ftp
+    23/tcp   open  telnet
+    2222/tcp open  EtherNetIP-1
+
     
 
 
