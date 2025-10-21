@@ -9,3 +9,7 @@ github.com/pmigoku/cybersecurity-public
         for i in {97..126} ;do (ping -c 1 192.168.28.$i | grep "bytes from" &) 2>/dev/null ;done
 #even more target
   proxychains nmap -Pn -sT -sV -T5 192.168.28.100,105,111,120
+
+
+https://sec-cted-tech-college-cttsb-cctc-sec-12e0e75a1babbeec38083447b9.cybbh.io/04_Web_Exploitaion.html#website-enumeration:~:text=is%20being%20stored.-,DEMO%3A%20Website%20Enumeration,-%C2%B6
+  ----Robots.txt example, browse to Demo-Web_Exploit_upload on the DEMO net. """""http://<float ip>/robots.txt"""""
