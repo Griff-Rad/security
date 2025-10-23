@@ -1,8 +1,41 @@
          lvaZsAC2R0TC, 10.50.15.162
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DEMO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+demo1_new.exe
 
 
+#STATIC ANALYSIS
+         file demo1_new.exe
+                  demo1_new.exe: PE32 executable (console) Intel 80386, for MS Windows
+         xxd demo1_new.exe | head
+         xxd /bin/ls | head
+                  binary hex dump results
+         strings demo1_new.exe
+                  copy over strings within the file that look interesting
 
+#HASH 
+         md5sum demo1_new.exe
+                  *result of the hash*
+         sha256sum demo1_new.exe
+                  *result of the hash*
+                           modified times and permissions and such
+
+#DYNAMIC ANALYSIS
+//Transfer to windows
+         python3 -m http.serer 8080 (<RHP>)
+         *browse to linop station ip with RHP*
+         download the code
+RUN IT
+open GHIDRA
+         new project 
+         nonshared product
+         import file 
+         search for strings in the default
+         compare to itself 
+         export as PE
+
+
+         
 
 
 
