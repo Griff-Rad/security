@@ -17,17 +17,35 @@ Scheme of Maneuver:
 			  Hostname: unknown
 			  IP: 192.168.28.27
 			  Creds: comrade :: StudentPrivPassword
-			  Last Known Ports: unknown
+			  Last Known Ports: 22
 			  Action: Test supplied credentials, if possible gain access to host. Conduct host survey and gain privileged access.
 			  
 			  T2
 			  Hostname: unknown
 			  IP: 192.168.28.12
 			  Creds: comrade :: StudentPrivPassword
-			  Last Known Ports: unknown
+			  Last Known Ports: 22
 			  Action: Test supplied credentials, if possible gain access to host. Conduct host survey and gain privileged access.
 
 ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+lvaZsAC2R0TC, 10.50.15.162
+
+ ssh -MS /tmp/first student@10.50.15.162 -L 27500:192.168.28.105:2222 -L 27501:192.1.28.12:22 -L 27502:192.168.28.27:22
+
+Nmap scan report for 192.168.28.12
+	PORT   STATE  SERVICE VERSION
+	21/tcp closed ftp
+	22/tcp open   ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+	23/tcp closed telnet
+	Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Nmap scan report for 192.168.28.27
+	PORT   STATE  SERVICE VERSION
+	22/tcp open   ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+	23/tcp closed telnet
+	Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
 
 
 
