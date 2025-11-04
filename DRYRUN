@@ -49,8 +49,18 @@ proxychains ssh user3@192.168.28.165
 Bob4THEPin3apples
 
 192.168.28.189
-aaron
-nc = 22/ssh
+Aaron
+proxychains nmap -Pn -T5 192.168.28.189
+Nmap scan report for 192.168.28.189
+PORT     STATE SERVICE
+22/tcp   open  ssh
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+3389/tcp open  ms-wbt-server
+5357/tcp open  wsdapi
+9999/tcp open  abyss
+
 
 ssh -MS /tmp/user2 user2@10.50.15.72 -L 19500:10.50.15.72:80 -L 19501:192.168.28.175:8000 -L 19502:192.168.28.175:2222 -L 19503:192.168.28.165:22 -L 19504:192.168.28.165:8888
  ssh -MS /tmp/189 -p 19503 user3@localhost -L 19506:192.168.28.189:22
